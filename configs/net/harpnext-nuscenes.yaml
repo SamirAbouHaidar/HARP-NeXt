@@ -1,0 +1,83 @@
+# Copyright 2025 CEA LIST - Samir Abou Haidar
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+model:
+  name: harpnext
+
+  voxel_encoder:
+    in_channels: 4
+    feat_channels: [64, 128, 256, 256]
+    with_distance: True
+    with_cluster_center: True
+    with_pre_norm: True
+    feat_compression: 16
+
+  backbone:
+    in_channels: 16
+    point_in_channels: 384
+    output_shape: [32, 480]
+    depth: 10
+    stem_channels: 128
+    num_stages: 4
+    out_channels: [128, 128, 128, 128]
+    strides: [1, 2, 2, 2]
+    dilations: [1, 1, 1, 1]
+    fuse_channels: [256, 128]
+    dw_conv_kernel: 3
+    dw_conv_bias: False
+    inter_align_corners: False
+
+  decode_head:
+    in_channels: 128
+    middle_channels: [128, 256, 128, 64]
+    channels: 64
+    dropout_ratio: 0
+    num_classes: 16
+    conv_seg_kernel_size: 1
+
+  auxiliary: True
+  auxiliary_heads:
+    channels: 128
+    dropout_ratio: 0
+    conv_seg_kernel_size: 1
+
+classif:
+  nb_class: 16    
+  ignore_class: 255 
+  
+augmentations:
+  pointsample: 0.9
+  randomflip: 
+    sync_2d: False
+    flip_ratio_bev_horizontal: 0.5
+    flip_ratio_bev_vertical: 0.5
+  GlobalRotScaleTrans:
+    rot_range : [-3.1415926, 3.1415926]
+    scale_ratio_range: [0.95, 1.05]
+    translation_std: [0.1, 0.1, 0.1]
+    
+input_feat:
+  - "intensity"
+
+range_proj:
+  range_H: 32
+  range_W: 480
+  fov_up: 10.0
+  fov_down: -30.0
+
+train:
+  lamda: 1.0
+
+preproc:
+  gpu: False  #Set to False when Training (PreProc on CPU)
