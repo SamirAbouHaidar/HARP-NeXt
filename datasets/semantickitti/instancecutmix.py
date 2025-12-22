@@ -126,7 +126,7 @@ class InstanceCutMix:
             which_one = torch.randint(len(self.bank[id_class]), (nb_to_add,))
             for ii in range(nb_to_add):
                 # Point p where to add the instance
-                p = pc_vox[where_surface[id_tot]]
+                p = pc_vox[where_surface[min(id_tot, len(where_surface)-1)]]
                 # Extract instance
                 object = self.bank[id_class][which_one[ii]]
                 object = np.fromfile(object, dtype=np.float32).reshape((-1, 4))
