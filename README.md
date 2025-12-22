@@ -235,13 +235,14 @@ nuscenes
 You can download the SemanticKITTI dataset from the [official website](http://www.semantic-kitti.org/dataset.html) with the following structure:
 ```
 semantickitti
-├── sequences
-│   ├── 00
-│   │   ├── labels
-│   │   ├── velodyne
-│   ├── 01
-│   ├── ..
-│   ├── 21
+├── dataset
+│   ├── sequences
+│   │   ├── 00
+│   │   │   ├── labels
+│   │   │   ├── velodyne
+│   │   ├── 01
+│   │   ├── ..
+│   │   ├── 21
 ```
 
 
@@ -278,6 +279,7 @@ python main.py \
 --netconfig ./configs/net/harpnext-semantickitti.yaml \
 --log_path ./pretrained/harpnext-cutmix-semantickitti-64x512 \
 --gpu 0 \
+--seed 0 \
 --fp16 \
 --restart \
 --eval
@@ -315,6 +317,7 @@ python main.py \
 --netconfig ./configs/net/harpnext-semantickitti.yaml \
 --log_path ./logs/harpnext-cutmix-semantickitti-64x512-retrain \
 --gpu 0 \
+--seed 0 \
 --fp16
 ```
 
