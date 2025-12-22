@@ -285,7 +285,7 @@ python main.py \
 --eval
 ```
 
-You can choose whether to execute the pre-processing on **CPU** or **GPU** by setting the option in the corresponding netconfig in [`harpnext-nuscenes.yaml`](https://github.com/SamirAbouHaidar/HARP-NeXt/blob/main/configs/net/harpnext-nuscenes.yaml) and [`harpnext-semantickitti.yaml`](https://github.com/SamirAbouHaidar/HARP-NeXt/blob/main/configs/net/harpnext-semantickitti.yaml) files. Additionally, when evaluating with **GPU**, always set batch_size=1 in in [`mainconfig`](https://github.com/SamirAbouHaidar/HARP-NeXt/blob/main/configs/main/main-config.yaml) to ensure correct pre-processing.
+You can choose whether to execute the pre-processing on **CPU** or **GPU** by setting the option in the corresponding netconfig in [`harpnext-nuscenes.yaml`](https://github.com/SamirAbouHaidar/HARP-NeXt/blob/main/configs/net/harpnext-nuscenes.yaml) and [`harpnext-semantickitti.yaml`](https://github.com/SamirAbouHaidar/HARP-NeXt/blob/main/configs/net/harpnext-semantickitti.yaml) files. Additionally, when evaluating with **GPU**, always set batch_size=1 in in [`main-config.yaml`](https://github.com/SamirAbouHaidar/HARP-NeXt/blob/main/configs/main/main-config.yaml) to ensure correct pre-processing.
 
 
 ## Training 
