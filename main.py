@@ -222,7 +222,7 @@ def distributed_training(gpu, ngpus_per_node, args, mainconfig, netconfig):
         model = torch.nn.DataParallel(model).cuda()
 
     if args.gpu == 0 or args.gpu is not None:
-        print(f"Model:\n{model}")
+        #print(f"Model:\n{model}")
         nb_param = sum([p.numel() for p in model.parameters()]) / 1e6
         print(f"{nb_param} x 10^6 trainable parameters ")
 
