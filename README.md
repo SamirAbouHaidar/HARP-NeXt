@@ -335,12 +335,13 @@ This work is under the [Apache 2.0 license](LICENSE).
 Kindly consider citing our paper if you find this work helpful:
 
 ```
-@article{abouhaidar2025harpnext,
-  title={HARP-NeXt: High-Speed and Accurate Range-Point Fusion Network for 3D LiDAR Semantic Segmentation},
+@INPROCEEDINGS{abouhaidar2025harpnext,
   author={Abou Haidar, Samir and Chariot, Alexandre and Darouich, Mehdi and Joly, Cyril and Deschaud, Jean-Emmanuel},
-  journal={arXiv preprint arXiv:2510.06876},
-  year={2025}
-}
+  booktitle={2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={HARP-NeXt: High-Speed and Accurate Range-Point Fusion Network for 3D LiDAR Semantic Segmentation}, 
+  year={2025},
+  pages={5946-5953},
+  doi={10.1109/IROS60139.2025.11246557}}
 ```
 
 ## Acknowledgements
