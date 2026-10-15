@@ -177,6 +177,9 @@ def getSemanticKITTIProcessor(base):
 
                 # Cutmix
                 pc, labels = self.cutmix(pc, labels, labels_inst)
+                if pc is None:
+                    # print(f"InstanceCutMix returned None for index {index}")
+                    return None
 
                 # Create reverse mapping
                 reverse_learning_map = {v: k for k, v in self.learning_map.items()}

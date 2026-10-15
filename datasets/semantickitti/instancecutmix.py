@@ -123,10 +123,11 @@ class InstanceCutMix:
         new_pc, new_label  = [pc], [class_label]
         for id_class in self.bank.keys():
             nb_to_add = torch.randint(self.num_to_add, (1,))[0]
+            nb_to_add = np.min((nb_to_add, len(where_surface) - id_tot))   # clamp
             which_one = torch.randint(len(self.bank[id_class]), (nb_to_add,))
             for ii in range(nb_to_add):
                 # Point p where to add the instance
-                p = pc_vox[where_surface[min(id_tot, len(where_surface)-1)]]
+                p = pc_vox[where_surface[id_tot]]
                 # Extract instance
                 object = self.bank[id_class][which_one[ii]]
                 object = np.fromfile(object, dtype=np.float32).reshape((-1, 4))
@@ -146,8 +147,7 @@ class InstanceCutMix:
     def __call__(self, pc, class_label, instance_label):
         if not self.__loaded__:
             self.cut(pc, class_label, instance_label)
-
-            return pc, class_label
+            return None, None          
         return self.mix(pc, class_label)
 
 class PolarMix:
