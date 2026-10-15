@@ -283,6 +283,12 @@ def distributed_training(gpu, ngpus_per_node, args, mainconfig, netconfig):
 
 def main(args, mainconfig, netconfig):
 
+    # Instance CutMix is only supported for SemanticKITTI
+    if args.dataset.lower() != "semantic_kitti":
+        if mainconfig["augmentations"]["instance_cutmix"]:
+            print(f"instance_cutmix is not supported for {args.dataset}, setting it to False.")
+        mainconfig["augmentations"]["instance_cutmix"] = False
+
     args.device = "cuda"
     args.rank = 0
     args.world_size = 1
