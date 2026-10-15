@@ -18,7 +18,7 @@ dataloader:
   num_workers: 12
 
 augmentations:
-  instance_cutmix: False # set True when Training if needed, False when validating (only for SemanticKITTI)
+  instance_cutmix: True # set True when Training if needed, False when validating (only for SemanticKITTI)
 
 loss:
   lovasz: 1.0
@@ -31,5 +31,5 @@ optim:
 
 scheduler:
   min_lr: 0.00001 
-  max_epoch: 90 
+  max_epoch: 100 
   epoch_warmup: 4
