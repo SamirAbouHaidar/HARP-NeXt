@@ -67,9 +67,9 @@ def get_train_augmentations(args, mainconfig, netconfig):
         else:
             raise ValueError("Unknown transformation")
 
-        print("List of transformations:", list_of_transf)
+    print("List of transformations:", list_of_transf)
 
-        return tr.Compose(list_of_transf)
+    return tr.Compose(list_of_transf)
 
 
 
@@ -103,7 +103,7 @@ def get_datasets(netconfig, args):
     # Validation dataset
     val_dataset = DATASET(
         phase="val",
-        **kwargs,
+        **{**kwargs, "batch_size": 1},
     )
 
     return train_dataset, val_dataset
@@ -132,7 +132,7 @@ def get_dataloader(train_dataset, val_dataset, args, mainconfig):
 
         val_loader = torch.utils.data.DataLoader(
             val_dataset,
-            batch_size=args.batch_size,
+            batch_size=1,
             shuffle=False,
             num_workers=args.workers,
             pin_memory=True,
@@ -152,7 +152,7 @@ def get_dataloader(train_dataset, val_dataset, args, mainconfig):
 
         val_loader = torch.utils.data.DataLoader(
         val_dataset,
-        batch_size=args.batch_size,
+        batch_size=1,
         shuffle=False,
         num_workers=args.workers,
         pin_memory=True,
@@ -274,7 +274,7 @@ def distributed_training(gpu, ngpus_per_node, args, mainconfig, netconfig):
 
     )
     if args.restart:
-        mng.load_state(best=True) #True
+        mng.load_state(best=True) # True, set to False to resume training from last epoch
     if args.eval:
         mng.one_epoch(training=False)
     else:
