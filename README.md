@@ -26,6 +26,9 @@
     <a href="https://cloud.minesparis.psl.eu/index.php/s/eUOcaEXZRLNfV1e/download?path=%2Fvideo&files=HARP-NeXt%20nuScenes%20vid.mp4" target='_blank'>
         <img src="https://img.shields.io/badge/Video-%F0%9F%8E%AC-gray">
     </a>
+    <a href="https://huggingface.co/samir-abh/HARP-NeXt" target="_blank">
+        <img src="https://img.shields.io/badge/Hugging%20Face-Model-gray?logo=huggingface&logoColor=yellow" alt="Hugging Face">
+    </a>
 </div>
 
 ## About
@@ -42,7 +45,7 @@ at multiple abstraction levels to preserve essential geometric details, thereby 
 
 
 ## Updates
-
+- \[2026.09\] - Pretrained model weights for nuScenes and SemanticKITTI are now available on [Hugging Face](https://huggingface.co/samir-abh/HARP-NeXt).
 - \[2025.10\] - We provide trained network weights on nuScenes and SemanticKITTI benchmarks. The checkpoints are available [here](https://cloud.minesparis.psl.eu/index.php/s/eUOcaEXZRLNfV1e).
 - \[2025.10\] - Our paper is available on [arXiv](https://arxiv.org/abs/2510.06876), and the code is publicly available.
 - \[2025.06\] - Our paper was accepted by [IROS 2025](https://www.iros25.org/).
